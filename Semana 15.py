@@ -1,31 +1,45 @@
-# Diccionario en Python - Datos ingresados por el usuario
+def crear_diccionario():
+    """Crea un diccionario con datos ingresados por el usuario"""
+    return {
+        "nombre": input("Ingrese su nombre: "),
+        "edad": int(input("Ingrese su edad: ")),
+        "ciudad": input("Ingrese su ciudad: "),
+        "profesion": input("Ingrese su profesión: ")
+    }
 
-# Crear un diccionario vacío
-informacion_personal = {}
+def actualizar_ciudad(dic):
+    nueva_ciudad = input("Ingrese una nueva ciudad para actualizar: ")
+    dic["ciudad"] = nueva_ciudad
 
-# Ingresar datos desde el teclado
-informacion_personal["nombre"] = input("Ingrese su nombre: ")
-informacion_personal["edad"] = int(input("Ingrese su edad: "))
-informacion_personal["ciudad"] = input("Ingrese su ciudad: ")
-informacion_personal["profesion"] = input("Ingrese su profesión: ")
+def actualizar_profesion(dic):
+    nueva_profesion = input("Ingrese una nueva profesión: ")
+    dic["profesion"] = nueva_profesion
 
-# Acceder y modificar el valor de la clave "ciudad"
-nueva_ciudad = input("Ingrese una nueva ciudad para actualizar: ")
-informacion_personal["ciudad"] = nueva_ciudad
+def verificar_telefono(dic):
+    if "telefono" not in dic:
+        dic["telefono"] = input("Ingrese un número de teléfono: ")
 
-# Agregar una nueva clave-valor (profesión actualizada)
-nueva_profesion = input("Ingrese una nueva profesión: ")
-informacion_personal["profesion"] = nueva_profesion
+def eliminar_edad(dic):
+    if "edad" in dic:
+        del dic["edad"]
 
-# Verificar si existe la clave "telefono". Si no existe, agregarla
-if "telefono" not in informacion_personal:
-    telefono = input("Ingrese su número de teléfono: ")
-    informacion_personal["telefono"] = telefono
+def main():
+    # Crear diccionario inicial
+    informacion_personal = crear_diccionario()
+    
+    print("\nDiccionario inicial:")
+    print(informacion_personal)
+    
+    # Operaciones
+    actualizar_ciudad(informacion_personal)
+    actualizar_profesion(informacion_personal)
+    verificar_telefono(informacion_personal)
+    eliminar_edad(informacion_personal)
+    
+    print("\nDiccionario final:")
+    print(informacion_personal)
 
-# Eliminar la clave "edad"
-if "edad" in informacion_personal:
-    del informacion_personal["edad"]
+# Ejecutar el programa
+if __name__ == "__main__":
+    main()
 
-# Imprimir el diccionario final
-print("\nDiccionario final:")
-print(informacion_personal)
